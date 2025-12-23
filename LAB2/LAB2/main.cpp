@@ -65,8 +65,6 @@ void printSentencesStartingWithDash(const std::string& filename) {
         char c = text[i];
         accum.push_back(c);
         if (c == '.' || c == '!' || c == '?') {
-            // end of a sentence (accum includes sentence)
-            // trim left and check if starts with dash
             string s = accum;
             string left = trimLeft(s);
             if (!left.empty() && (left[0] == '-' || left[0] == (char)0xE2 /* possible utf8 em-dash start */)) {
@@ -193,7 +191,7 @@ int main() {
             }
             else if (choice == 10) {
                 string fname;
-                cout << "Имя файла для анализа (кодировка UTF-8/CP1251): ";
+                cout << "Имя файла для анализа: ";
                 getline(cin, fname);
                 printSentencesStartingWithDash(fname);
             }
